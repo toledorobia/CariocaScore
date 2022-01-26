@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/activity_game_form.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/activity_game_wizard.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_game_data.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_game_players.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_game_rounds.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_add_game_players_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_players_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.25416666666666665" />
+      </ProjectState>
+    </option>
+  </component>
+</project>
