@@ -37,26 +37,17 @@ class GamePlayersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         gamePlayersAdapter = GamePlayersAdapter(
-            onAddPlayerClickListener = {
-                gameWizardViewModel.addPlayer()
-                gamePlayersAdapter.updateItems(gameWizardViewModel.players.value!!)
-            },
-            onRemovePlayerClickListener = {
-                gameWizardViewModel.removePlayer(it)
-                gamePlayersAdapter.updateItems(gameWizardViewModel.players.value!!)
-            },
-            onChangePlayerListener = { position, name ->
-                logger.d("$position: $name")
-                gameWizardViewModel.changePlayerName(position, name)
+            onCheckedPlayerListener = { player, checked ->
+                gameWizardViewModel.setPlayer(player, checked)
             }
         )
 
         binding.rvGamePlayers.adapter = gamePlayersAdapter
         binding.rvGamePlayers.layoutManager = LinearLayoutManager(context)
 
-//        gameWizardViewModel.players.observe(viewLifecycleOwner, Observer {
-//            gamePlayersAdapter.updateItems(it)
-//        })
+        gameWizardViewModel.players.observe(viewLifecycleOwner, Observer {
+            gamePlayersAdapter.updateItems(it)
+        })
     }
 
     companion object {

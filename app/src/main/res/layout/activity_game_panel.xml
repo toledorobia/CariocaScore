@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    tools:context=".ui.view.activity.GamePanelActivity">
+
+    <TableLayout
+        android:id="@+id/tlGameStatus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+<!--        <TableRow-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:minHeight="100dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:ellipsize="end"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Jonathan"-->
+<!--                android:tooltipText="Jonathan"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:ellipsize="end"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:maxLines="1"-->
+<!--                android:rotation="-90"-->
+<!--                android:text="Diego" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:ellipsize="end"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:maxLines="1"-->
+<!--                android:rotation="-90"-->
+<!--                android:text="Lucas" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:ellipsize="end"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:maxLines="1"-->
+<!--                android:rotation="-90"-->
+<!--                android:text="Alina" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:ellipsize="end"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:maxLines="1"-->
+<!--                android:rotation="-90"-->
+<!--                android:text="Caliope" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:ellipsize="end"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:maxLines="1"-->
+<!--                android:rotation="-90"-->
+<!--                android:text="Arizona" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:ellipsize="end"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:maxLines="1"-->
+<!--                android:rotation="-90"-->
+<!--                android:text="Phoebe" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:ellipsize="end"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:maxLines="1"-->
+<!--                android:rotation="-90"-->
+<!--                android:text="Lupita" />-->
+<!--        </TableRow>-->
+
+<!--        <TableRow android:layout_width="match_parent">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="2T"-->
+<!--                android:textAlignment="center" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+<!--        </TableRow>-->
+
+<!--        <TableRow android:layout_width="match_parent">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="2T-1E"-->
+<!--                android:tooltipText="2 Trios - 1 Escala"-->
+<!--                android:textAlignment="center"-->
+<!--                android:background="?android:attr/selectableItemBackground" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="345"-->
+<!--                android:textAlignment="textEnd" />-->
+<!--        </TableRow>-->
+
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

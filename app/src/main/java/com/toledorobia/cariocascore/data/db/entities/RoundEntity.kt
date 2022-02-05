@@ -12,4 +12,7 @@ data class RoundEntity(
 
     @ColumnInfo(name = "name")
     val name: String,
+
+    @ColumnInfo(name = "code")
+    val code: String,
 )

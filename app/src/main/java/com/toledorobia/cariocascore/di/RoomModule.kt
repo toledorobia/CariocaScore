@@ -19,7 +19,31 @@ object RoomModule {
     @Singleton
     @Provides
     fun provideRoom(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, CariocaDatabase::class.java, DATABASE_NAME).build()
+        Room.databaseBuilder(context, CariocaDatabase::class.java, DATABASE_NAME)
+            .createFromAsset("carioca.db")
+            .build()
 
+    @Singleton
+    @Provides
+    fun provideRoundDao(db: CariocaDatabase) = db.getRoundDao()
 
+    @Singleton
+    @Provides
+    fun providePlayerDao(db: CariocaDatabase) = db.getPlayerDao()
+
+    @Singleton
+    @Provides
+    fun provideGameDao(db: CariocaDatabase) = db.getGameDao()
+
+    @Singleton
+    @Provides
+    fun provideGameRoundDao(db: CariocaDatabase) = db.getGameRoundDao()
+
+    @Singleton
+    @Provides
+    fun provideGamePlayerDao(db: CariocaDatabase) = db.getGamePlayerDao()
+
+    @Singleton
+    @Provides
+    fun provideGameRoundPlayerDao(db: CariocaDatabase) = db.getGameRoundPlayerDao()
 }

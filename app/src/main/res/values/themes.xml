@@ -13,4 +13,28 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Badge" parent="@android:style/TextAppearance">
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="BadgeSecondary" parent="Badge">
+        <item name="android:background">@drawable/badge</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="BadgeSuccess" parent="Badge">
+        <item name="android:background">@drawable/badge_success</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="BadgeWarning" parent="Badge">
+        <item name="android:background">@drawable/badge_warning</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>
