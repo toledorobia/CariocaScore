@@ -1,8 +1,79 @@
 <resources>
-    <string name="app_name">Score</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Carioca Score</string>
+    <string name="title_games">Games</string>
+    <string name="title_players">Players</string>
+
+    <string name="player">Player</string>
+    <string name="game">Game</string>
+    <string name="round">Round</string>
+    <string name="game_info">Game</string>
+    <string name="name">Name</string>
+    <string name="players">Players</string>
+    <string name="rounds">Rounds</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
+    <string name="prev">Prev</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="game_name">Game name</string>
+    <string name="player_name">Player name</string>
+    <string name="pending">Pending</string>
+    <string name="finished">Finished</string>
+    <string name="total_score">Total Score</string>
+    <string name="new_game">New Game</string>
+    <string name="new_player">New Player</string>
+    <string name="confirm_delete">Confirm delete</string>
+    <string name="msg_confirm_delete_player">Are you sure you want delete this player?</string>
+    <string name="confirm_scores">Confirm scores</string>
+    <string name="msg_confirm_scores">Are you sure you save the scores for this round? This cannot be edited later.</string>
+    <string name="msg_confirm_delete_game">Are you sure you want delete this game?</string>
+    <string name="game_deleted">Game deleted.</string>
+    <string name="player_deleted">Player deleted.</string>
+
+    <string name="val_cant_be_empty">%1$s can\'t be empty.</string>
+    <string name="val_required_players">You must choose almost 2 players.</string>
+    <string name="val_required_rounds">You must chose almost one round.</string>
+
+    <string name="msg_saved">%1$s saved.</string>
+    <string name="msg_created">%1$s created.</string>>
+
+    <string name="two_three_of_a_kind">Two three-of-a-kind</string>
+    <string name="one_straight_one_three_of_a_kind">One straight, one three-of-a-kind</string>
+    <string name="two_straights">Two straights</string>
+    <string name="three_three_of_a_kind">Three three-of-a-kind</string>
+    <string name="two_three_of_a_kind_one_straight">Two three-of-a-kind, One straight</string>
+    <string name="two_straights_one_three_of_a_kind">Two straights, One three-of-a-kind</string>
+    <string name="three_straights">Three straights</string>
+    <string name="four_three_of_a_kind">Four three-of-a-kind</string>
+    <string name="crazy_straight">Crazy straight</string>
+    <string name="royal_straight">Royal straight</string>
+
+    <plurals name="number_rounds">
+        <item quantity="one">%d round</item>
+        <item quantity="other">%d rounds</item>
+    </plurals>
+
+    <plurals name="number_players">
+        <item quantity="one">%d player</item>
+        <item quantity="other">%d players</item>
+    </plurals>
+
+    <plurals name="number_matches">
+        <item quantity="one">%d match</item>
+        <item quantity="other">%d matches</item>
+    </plurals>
+
+    <plurals name="number_wins">
+        <item quantity="one">%d win</item>
+        <item quantity="other">%d wins</item>
+    </plurals>
+
+    <plurals name="number_losses">
+        <item quantity="one">%d loss</item>
+        <item quantity="other">%d losses</item>
+    </plurals>
 </resources>

@@ -23,6 +23,7 @@ class CreateGame @Inject constructor(
                 playerId = it.id,
                 score = 0,
                 winner = false,
+                loser = false,
             ))
         }
 
@@ -40,7 +41,7 @@ class CreateGame @Inject constructor(
                     gameId = gameId,
                     roundId = round.id,
                     playerId = player.id,
-                    score = 0,
+                    score = null,
                     winner = false,
                 ))
             }

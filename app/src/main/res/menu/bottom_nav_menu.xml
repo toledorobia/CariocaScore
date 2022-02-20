@@ -3,17 +3,12 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:icon="@drawable/cards_playing_club_multiple_outline"
+        android:title="@string/title_games" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_players"
         android:icon="@drawable/ic_baseline_person_24"
-        android:title="Players" />
-
-<!--    <item-->
-<!--        android:id="@+id/navigation_notifications"-->
-<!--        android:icon="@drawable/ic_notifications_black_24dp"-->
-<!--        android:title="@string/title_notifications" />-->
+        android:title="@string/title_players" />
 
 </menu>

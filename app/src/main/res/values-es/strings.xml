@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">Carioca Score</string>
+    <string name="title_games">Partidas</string>
+    <string name="title_players">Jugadores</string>
+
+    <string name="player">Jugador</string>
+    <string name="game">Juego</string>
+    <string name="round">Ronda</string>
+    <string name="game_info">Juego</string>
+    <string name="name">Nombre</string>
+    <string name="players">Jugadores</string>
+    <string name="rounds">Rondas</string>
+
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="back">Volver</string>
+    <string name="cancel">Cancelar</string>
+    <string name="next">Siguiente</string>
+    <string name="prev">Anterior</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Eliminar</string>
+    <string name="game_name">Nombre del juego</string>
+    <string name="player_name">Nombre del jugador</string>
+    <string name="pending">En curso</string>
+    <string name="finished">Finalizado</string>
+    <string name="total_score">Puntaje Total</string>
+    <string name="new_game">Nuevo Juego</string>
+    <string name="new_player">Nuevo Jugador</string>
+    <string name="confirm_delete">Confirmar eliminación</string>
+    <string name="msg_confirm_delete_player">¿Seguro deseas eliminar este jugador?</string>
+    <string name="confirm_scores">Confirmar puntajes</string>
+    <string name="msg_confirm_scores">¿Estás seguro de guardar los puntajes de esta ronda? Esto no puede editarse posteriormente.</string>
+    <string name="msg_confirm_delete_game">¿Estás seguro que deseas eliminar este juego?</string>
+    <string name="game_deleted">Juego eliminado.</string>
+    <string name="player_deleted">Jugador eliminado.</string>
+
+    <string name="val_cant_be_empty">%1$s no puede ser vacio.</string>
+    <string name="val_required_players">Debes seleccionar por lo menos 2 jugadores.</string>
+    <string name="val_required_rounds">Debes seleccionar por lo menos una ronda.</string>
+
+    <string name="msg_saved">%1$s guardado.</string>
+    <string name="msg_created">%1$s creado.</string>
+
+    <string name="two_three_of_a_kind">Dos tríos</string>
+    <string name="one_straight_one_three_of_a_kind">Un trío, una escala</string>
+    <string name="two_straights">Dos escalas</string>
+    <string name="three_three_of_a_kind">Tres tríos</string>
+    <string name="two_three_of_a_kind_one_straight">Dos tríos, una escala</string>
+    <string name="two_straights_one_three_of_a_kind">Dos escalas, un trío</string>
+    <string name="three_straights">Tres escalas</string>
+    <string name="four_three_of_a_kind">Cuatro escalas</string>
+    <string name="crazy_straight">Escala loca</string>
+    <string name="royal_straight">Escala real</string>
+
+    <plurals name="number_rounds">
+        <item quantity="one">%d ronda</item>
+        <item quantity="other">%d rondas</item>
+    </plurals>
+
+    <plurals name="number_players">
+        <item quantity="one">%d jugador</item>
+        <item quantity="other">%d jugadores</item>
+    </plurals>
+
+    <plurals name="number_matches">
+        <item quantity="one">%d partida</item>
+        <item quantity="other">%d partidas</item>
+    </plurals>
+
+    <plurals name="number_wins">
+        <item quantity="one">%d victoria</item>
+        <item quantity="other">%d victorias</item>
+    </plurals>
+
+    <plurals name="number_losses">
+        <item quantity="one">%d derrota</item>
+        <item quantity="other">%d derrotas</item>
+    </plurals>
+
+</resources>

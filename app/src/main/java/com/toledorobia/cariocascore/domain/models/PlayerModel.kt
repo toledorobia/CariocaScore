@@ -10,5 +10,3 @@ data class PlayerModel(
 )
 
 fun PlayerEntity.toDomain() = PlayerModel(id, name, deleted)
-
-class InvalidPlayerException(message: String): Exception(message)

@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable-v24/cards_playing_outline.xml" value="0.1525" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable-v24/cards_playing_outline2.xml" value="0.1525" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1525" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable/badge.xml" value="0.1525" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable/badge_danger.xml" value="0.247" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable/badge_primary.xml" value="0.1525" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable/badge_success.xml" value="0.1525" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable/badge_warning.xml" value="0.1525" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable/cards_playing_club_multiple_outline.xml" value="0.1525" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1275" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2703125" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/activity_game_form.xml" value="0.25416666666666665" />
@@ -13,19 +19,35 @@
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/activity_game_wizard.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/activity_player_form.xml" value="0.38125" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/activity_round_form.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_game_data.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_game_players.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_game_rounds.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_game_wizard_players.xml" value="0.1925925925925926" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_games.xml" value="0.1925925925925926" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/fragment_players.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_add_game_players_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_list.xml" value="0.25416666666666665" />
-        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_list.xml" value="0.1925925925925926" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_game_results.xml" value="0.1925925925925926" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_game_scores_adapter.xml" value="0.1925925925925926" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_list.xml" value="0.3902439024390244" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_results_adapter.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_results_list.xml" value="0.536" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_round_player_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_rounds_results.xml" value="0.1925925925925926" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_rounds_scores_adapter.xml" value="0.1925925925925926" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_scores.xml" value="0.4" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_panel_scores_list.xml" value="0.4" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_players_details_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_players_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_game_rounds_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_player_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_players_list.xml" value="0.4" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_round_form_adapter.xml" value="0.109375" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/layout/item_round_form_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/CariocaScore/app/src/main/res/menu/form_menu.xml" value="0.1925925925925926" />
         <entry key="..\:/Projects/CariocaScore/app/src/main/res/menu/player_menu.xml" value="0.1935185185185185" />
       </map>
     </option>

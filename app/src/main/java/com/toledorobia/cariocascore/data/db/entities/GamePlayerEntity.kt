@@ -22,6 +22,9 @@ data class GamePlayerEntity(
 
     @ColumnInfo(name = "winner")
     val winner: Boolean,
+
+    @ColumnInfo(name = "loser")
+    val loser: Boolean,
 )
 
-fun GamePlayerModel.toEntity() = GamePlayerEntity(id, gameId, playerId, score, winner)
+fun GamePlayerModel.toEntity() = GamePlayerEntity(id, gameId, playerId, score, winner, loser)

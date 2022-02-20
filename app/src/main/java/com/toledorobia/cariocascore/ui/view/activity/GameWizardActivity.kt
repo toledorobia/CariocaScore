@@ -13,11 +13,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.material.snackbar.Snackbar
+import com.toledorobia.cariocascore.R
 import com.toledorobia.cariocascore.databinding.ActivityGameWizardBinding
 import com.toledorobia.cariocascore.ui.event.FormEvent
-import com.toledorobia.cariocascore.ui.view.fragment.GameDataFragment
-import com.toledorobia.cariocascore.ui.view.fragment.GamePlayersFragment
-import com.toledorobia.cariocascore.ui.view.fragment.GameRoundsFragment
+import com.toledorobia.cariocascore.ui.view.fragment.GameWizardDataFragment
+import com.toledorobia.cariocascore.ui.view.fragment.GameWizardPlayersFragment
+import com.toledorobia.cariocascore.ui.view.fragment.GameWizardRoundsFragment
 import com.toledorobia.cariocascore.ui.viewmodel.GameWizardViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -34,8 +35,8 @@ class GameWizardActivity : AppCompatActivity() {
         binding = ActivityGameWizardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         wizardCollectionAdapter = WizardCollectionAdapter(this)
 
@@ -47,59 +48,65 @@ class GameWizardActivity : AppCompatActivity() {
                     super.onPageSelected(position)
 
                     gameWizardViewModel.onChangePage(position, wizardCollectionAdapter.itemCount)
+
+                    when (position) {
+                        0 -> title = getString(R.string.game_info)
+                        1 -> title = getString(R.string.players)
+                        2 -> title = getString(R.string.rounds)
+                    }
                 }
             })
 
-            btPrev.setOnClickListener {
+            btPrevGame.setOnClickListener {
                 binding.vpWizard.currentItem = binding.vpWizard.currentItem - 1
             }
 
-            btNext.setOnClickListener {
+            btNextGame.setOnClickListener {
                 binding.vpWizard.currentItem = binding.vpWizard.currentItem + 1
             }
 
-            btCancel.setOnClickListener {
+            btCancelGame.setOnClickListener {
                 finish()
             }
 
-            btSave.setOnClickListener {
+            btSaveGame.setOnClickListener {
                 gameWizardViewModel.saveGame()
             }
         }
 
-        gameWizardViewModel.enablePrev.observe(this, Observer {
-            binding.btPrev.isEnabled = it
-        })
+        gameWizardViewModel.enablePrev.observe(this) {
+            binding.btPrevGame.isEnabled = it
+        }
 
-        gameWizardViewModel.enableNext.observe(this, Observer {
-            binding.btNext.isEnabled = it
-        })
+        gameWizardViewModel.enableNext.observe(this) {
+            binding.btNextGame.isEnabled = it
+        }
 
-        gameWizardViewModel.visibleSave.observe(this, Observer {
-            binding.btNext.visibility = if (it) {
+        gameWizardViewModel.visibleSave.observe(this) {
+            binding.btNextGame.visibility = if (it) {
                 View.GONE
             }
             else {
                 View.VISIBLE
             }
 
-            binding.btSave.visibility = if (it) {
+            binding.btSaveGame.visibility = if (it) {
                 View.VISIBLE
             }
             else {
                 View.GONE
             }
-        })
+        }
 
         gameWizardViewModel.visibleCancel.observe(this, Observer {
-            binding.btPrev.visibility = if (it) {
+            binding.btPrevGame.visibility = if (it) {
                 View.GONE
             }
             else {
                 View.VISIBLE
             }
 
-            binding.btCancel.visibility = if (it) {
+            binding.btCancelGame.visibility = if (it) {
                 View.VISIBLE
             }
             else {
@@ -122,10 +129,10 @@ class GameWizardActivity : AppCompatActivity() {
                     }
                     is FormEvent.Submitting -> {
                         binding.apply {
-                            btCancel.isEnabled = !it.loading
-                            btSave.isEnabled = !it.loading
-                            btNext.isEnabled = !it.loading
-                            btPrev.isEnabled = !it.loading
+                            btCancelGame.isEnabled = !it.loading
+                            btSaveGame.isEnabled = !it.loading
+                            btNextGame.isEnabled = !it.loading
+                            btPrevGame.isEnabled = !it.loading
                         }
                     }
                 }
@@ -151,9 +158,9 @@ class GameWizardActivity : AppCompatActivity() {
 
         override fun createFragment(position: Int): Fragment {
             return when(position) {
-                0 -> GameDataFragment.newInstance()
-                1 -> GamePlayersFragment.newInstance()
-                2 -> GameRoundsFragment.newInstance()
+                0 -> GameWizardDataFragment.newInstance()
+                1 -> GameWizardPlayersFragment.newInstance()
+                2 -> GameWizardRoundsFragment.newInstance()
                 else -> throw IllegalStateException("Bad fragment position.")
             }
         }

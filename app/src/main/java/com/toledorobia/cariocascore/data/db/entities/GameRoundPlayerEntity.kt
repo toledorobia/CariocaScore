@@ -21,7 +21,7 @@ data class GameRoundPlayerEntity(
     val playerId: Int?,
 
     @ColumnInfo(name = "score", defaultValue = "0")
-    val score: Int,
+    val score: Int?,
 
     @ColumnInfo(name = "winner", defaultValue = "0")
     val winner: Boolean,

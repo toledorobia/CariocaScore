@@ -1,7 +1,9 @@
 package com.toledorobia.cariocascore.ui.viewmodel
 
 import androidx.lifecycle.*
+import com.toledorobia.cariocascore.R
 import com.toledorobia.cariocascore.core.Logger
+import com.toledorobia.cariocascore.core.Utils
 import com.toledorobia.cariocascore.domain.models.GameModel
 import com.toledorobia.cariocascore.domain.models.PlayerModel
 import com.toledorobia.cariocascore.domain.models.RoundModel
@@ -21,6 +23,7 @@ class GameWizardViewModel @Inject constructor(
     getPlayersForWizard: GetPlayersForWizard,
     val createGame: CreateGame,
     logger: Logger,
+    val utils: Utils,
 ) : ViewModel() {
     val enablePrev = MutableLiveData(false)
     val enableNext = MutableLiveData(true)
@@ -28,21 +31,18 @@ class GameWizardViewModel @Inject constructor(
     val visibleCancel = MutableLiveData(true)
 
     var gameName = MutableLiveData("")
-    val players = getPlayersForWizard().asLiveData()
+    val players = getPlayersForWizard().stateIn(viewModelScope, SharingStarted.Lazily, null)
     val playersSelected = mutableListOf<Int>()
 
-    val rounds = getRoundsForWizard().asLiveData()
+    val rounds = getRoundsForWizard().stateIn(viewModelScope, SharingStarted.Lazily, null)
     val roundsSelected = mutableListOf<Int>()
 
     private val _formEventChannel = Channel<FormEvent>()
     val formEvent = _formEventChannel.receiveAsFlow()
 
-//    val formEvent = MutableStateFlow<FormEvent?>(null)
-//    val formEvent: StateFlow<FormEvent?> = _formEvent.asStateFlow()
-
     init {
         viewModelScope.launch {
-            rounds.asFlow().collect { list ->
+            rounds.collectLatest { list ->
                 if (list != null) {
                     roundsSelected.addAll(0, list.map { it.id!! })
                     logger.d("Rounds selected: ${roundsSelected.size}")
@@ -94,17 +94,18 @@ class GameWizardViewModel @Inject constructor(
         }
     }
 
+    // TODO set loading when saving
     fun saveGame() {
         viewModelScope.launch {
             when {
                 gameName.value.isNullOrEmpty() -> {
-                    _formEventChannel.send(FormEvent.Error("The name is required"))
+                    _formEventChannel.send(FormEvent.Error(utils.str(R.string.val_cant_be_empty, utils.str(R.string.name))))
                 }
                 playersSelected.size < 2 -> {
-                    _formEventChannel.send(FormEvent.Error("You must choose almost 2 players"))
+                    _formEventChannel.send(FormEvent.Error(utils.str(R.string.val_required_players)))
                 }
                 roundsSelected.isEmpty() -> {
-                    _formEventChannel.send(FormEvent.Error("You must chose almost one round"))
+                    _formEventChannel.send(FormEvent.Error(utils.str(R.string.val_required_rounds)))
                 }
                 else -> {
                     withContext(Dispatchers.IO) {
@@ -128,7 +129,7 @@ class GameWizardViewModel @Inject constructor(
                         )
 
                         createGame(game, roundsToSave!!, playersToSave!!)
-                        _formEventChannel.send(FormEvent.Success("Game created!", true))
+                        _formEventChannel.send(FormEvent.Success(utils.str(R.string.msg_created, utils.str(R.string.game)), true))
                     }
                 }
             }

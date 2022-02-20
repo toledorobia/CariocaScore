@@ -3,30 +3,28 @@ package com.toledorobia.cariocascore.ui.view.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.toledorobia.cariocascore.core.IntentKey
 import com.toledorobia.cariocascore.databinding.FragmentPlayersBinding
-import com.toledorobia.cariocascore.ui.adapter.GameRoundsAdapter
 import com.toledorobia.cariocascore.ui.adapter.PlayersAdapter
-import com.toledorobia.cariocascore.ui.view.activity.GameWizardActivity
 import com.toledorobia.cariocascore.ui.view.activity.PlayerFormActivity
 import com.toledorobia.cariocascore.ui.viewmodel.PlayersViewModel
+import kotlinx.coroutines.flow.collectLatest
+import javax.inject.Inject
 
 class PlayersFragment : Fragment() {
 
     private lateinit var binding: FragmentPlayersBinding
     private val playersViewModel: PlayersViewModel by activityViewModels()
-    private lateinit var playersAdapter: PlayersAdapter
+
+    @Inject
+    lateinit var playersAdapter: PlayersAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,17 +40,12 @@ class PlayersFragment : Fragment() {
 
         playersAdapter = PlayersAdapter(
             context,
-            onEditPlayer = {
-                Toast.makeText(context, "edit player", Toast.LENGTH_LONG).show()
-            },
-            onDeletePlayer = {
-                Toast.makeText(context, "delete player", Toast.LENGTH_LONG).show()
-            },
-            onStatsPlayer = {
-                Toast.makeText(context, "stats player", Toast.LENGTH_LONG).show()
-            },
             onClickItem = {
-                //Toast.makeText(context, "click player ${it.name}", Toast.LENGTH_LONG).show()
+                val intent = Intent(context, PlayerFormActivity::class.java).apply {
+                    putExtra(IntentKey.PLAYER_ID, it.id)
+                }
+
+                startActivity(intent)
             }
         )
 
@@ -64,21 +57,15 @@ class PlayersFragment : Fragment() {
             DividerItemDecoration(context, linearLayoutManager.orientation)
         )
 
-
-        playersViewModel.players.observe(viewLifecycleOwner, Observer {
-            playersAdapter.updateItems(it)
-        })
+        lifecycleScope.launchWhenStarted {
+            playersViewModel.players.collectLatest {
+                playersAdapter.updateItems(it)
+            }
+        }
 
         binding.faPlayerAdd.setOnClickListener {
             val intent = Intent(context, PlayerFormActivity::class.java)
             startActivity(intent)
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-//        playersViewModel.onResume()
-    }
-
-
 }

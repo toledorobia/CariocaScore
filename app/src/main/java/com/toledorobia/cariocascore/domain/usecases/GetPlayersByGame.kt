@@ -9,6 +9,6 @@ class GetPlayersByGame @Inject constructor(
     private val playerRepository: PlayerRepository
 ) {
     operator fun invoke(gameId: Int?): Flow<List<PlayerModel>> {
-        return playerRepository.getPlayersByGameFromDb(gameId)
+        return playerRepository.getByGameFromDb(gameId)
     }
 }

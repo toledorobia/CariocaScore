@@ -7,7 +7,7 @@ data class GameRoundPlayerModel(
     val gameId: Int?,
     val roundId: Int?,
     val playerId: Int?,
-    val score: Int,
+    val score: Int?,
     val winner: Boolean,
 )
 

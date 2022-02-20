@@ -14,6 +14,17 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/purple_500</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/icon_splash</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/white</item>
+        <item name="postSplashScreenTheme">@style/Theme.CariocaScore</item>
+    </style>
+
+    <style name="ButtonSecondary" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/gray</item>
+    </style>
+
     <style name="Badge" parent="@android:style/TextAppearance">
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingTop">2dp</item>
@@ -35,6 +46,11 @@
 
     <style name="BadgeWarning" parent="Badge">
         <item name="android:background">@drawable/badge_warning</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="BadgeDanger" parent="Badge">
+        <item name="android:background">@drawable/badge_danger</item>
         <item name="android:textColor">@color/white</item>
     </style>
 </resources>

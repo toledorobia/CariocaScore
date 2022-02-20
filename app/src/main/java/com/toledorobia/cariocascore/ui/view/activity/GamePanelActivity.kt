@@ -1,22 +1,27 @@
 package com.toledorobia.cariocascore.ui.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
-import android.widget.TableRow
-import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.view.size
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.toledorobia.cariocascore.R
+import com.toledorobia.cariocascore.core.IntentKey
 import com.toledorobia.cariocascore.databinding.ActivityGamePanelBinding
-import com.toledorobia.cariocascore.databinding.ActivityGameWizardBinding
-import com.toledorobia.cariocascore.domain.models.GameRoundPlayerModel
-import com.toledorobia.cariocascore.domain.models.PlayerModel
-import com.toledorobia.cariocascore.domain.models.RoundModel
+import com.toledorobia.cariocascore.ui.adapter.GamePanelAdapter
+import com.toledorobia.cariocascore.ui.event.FormEvent
 import com.toledorobia.cariocascore.ui.viewmodel.GamePanelViewModel
-import com.toledorobia.cariocascore.ui.viewmodel.GameWizardViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class GamePanelActivity : AppCompatActivity() {
@@ -24,20 +29,77 @@ class GamePanelActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGamePanelBinding
     private val gamePanelViewModel: GamePanelViewModel by viewModels()
 
+    @Inject
+    lateinit var gamePanelAdapter: GamePanelAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGamePanelBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        gamePanelViewModel.players.observe(this) {
-            setHeaders(it)
+        gamePanelAdapter.setOnClickItem {
+            if (!it.finished) {
+                val intent = Intent(this@GamePanelActivity, RoundFormActivity::class.java).apply {
+                    putExtra(IntentKey.GAME_ID, it.gameId)
+                    putExtra(IntentKey.ROUND_ID, it.roundId)
+                }
+                startActivity(intent)
+            }
         }
 
-        gamePanelViewModel.rounds.observe(this) {
-            setResults(it)
+        binding.apply {
+            val linearLayoutManager = LinearLayoutManager(this@GamePanelActivity)
+            rvRoundsScores.adapter = gamePanelAdapter
+            rvRoundsScores.layoutManager = linearLayoutManager
+            rvRoundsScores.addItemDecoration(
+                DividerItemDecoration(this@GamePanelActivity, linearLayoutManager.orientation)
+            )
+        }
+
+        lifecycleScope.launchWhenStarted {
+            launch {
+                gamePanelViewModel.formEvent.collect {
+                    when (it) {
+                        is FormEvent.Error -> {
+                            Snackbar.make(binding.root, it.message, Snackbar.LENGTH_LONG).show()
+                        }
+                        is FormEvent.Delete -> {
+                            Toast.makeText(this@GamePanelActivity, it.message, Toast.LENGTH_LONG).show()
+
+                            if (it.finish) {
+                                finish()
+                            }
+                        }
+                    }
+                }
+            }
+
+            launch {
+                gamePanelViewModel.game.collect {
+                    title = it.name
+                }
+            }
+
+            launch {
+                gamePanelViewModel.rounds.collect {
+                    gamePanelAdapter.updateRounds(it)
+                }
+            }
+
+            launch {
+                gamePanelViewModel.roundsScores.collect {
+                    gamePanelAdapter.updateRoundsScores(it)
+                }
+            }
+
+            launch {
+                gamePanelViewModel.gameScores.collect {
+                    gamePanelAdapter.updateGameScores(it)
+                }
+            }
         }
     }
 
@@ -47,52 +109,29 @@ class GamePanelActivity : AppCompatActivity() {
                 finish()
                 return true;
             }
+            R.id.form_delete -> {
+                onDeletePlayer()
+            }
         }
 
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setHeaders(players: List<PlayerModel>) {
-        binding.tlGameStatus.apply {
-            if (childCount > 0) {
-                removeViewAt(0)
-            }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.form_menu, menu)
 
-            val row = TableRow(this@GamePanelActivity)
-            var col = TextView(this@GamePanelActivity)
-            col.text = "Rounds"
-            row.addView(col)
-
-            players.forEach {
-                col = TextView(this@GamePanelActivity)
-                col.text = it.name
-                row.addView(col)
-            }
-
-            addView(row, 0)
-        }
+        return true
     }
 
-    private fun setResults(rounds: Map<RoundModel, List<GameRoundPlayerModel>>) {
-        binding.tlGameStatus.apply {
-            if (childCount > 1) {
-                removeViews(1, childCount)
+    private fun onDeletePlayer() {
+        AlertDialog.Builder(this).apply {
+            setTitle(getString(R.string.confirm_delete))
+            setMessage(getString(R.string.msg_confirm_delete_game))
+            setPositiveButton(getString(R.string.yes)) { _, _ ->
+                gamePanelViewModel.onDeleteGame()
             }
-
-            rounds.forEach { entry ->
-                var row = TableRow(this@GamePanelActivity)
-                var col = TextView(this@GamePanelActivity)
-                col.text = entry.key.name
-                row.addView(col)
-
-                entry.value.forEach {
-                    col = TextView(this@GamePanelActivity)
-                    col.text = it.score.toString()
-                    row.addView(col)
-                }
-
-                addView(row)
-            }
+            setNegativeButton(getString(R.string.no), null)
+            show()
         }
     }
 }

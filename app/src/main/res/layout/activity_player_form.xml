@@ -7,14 +7,13 @@
     tools:context=".ui.view.activity.PlayerFormActivity">
 
 
-
     <TextView
         android:id="@+id/tvFormPlayerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:text=""
+        android:layout_marginTop="16dp"
+        android:text="@string/player_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,14 +32,34 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/btFormPlayerSave"
-        android:layout_width="match_parent"
+        android:id="@+id/btPlayerFormSave"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Save"
+        android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/glPlayerForm"
+        app:layout_constraintTop_toBottomOf="@+id/etFormPlayerName" />
+
+    <Button
+        android:id="@+id/btPlayerFormCancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        style="@style/ButtonSecondary"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toStartOf="@+id/glPlayerForm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etFormPlayerName" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glPlayerForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
 </androidx.constraintlayout.widget.ConstraintLayout>

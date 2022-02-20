@@ -11,4 +11,14 @@ class GameRoundRepository @Inject constructor(
     suspend fun insertOnDb(gameRound: GameRoundModel): Long {
         return gameRoundDao.insert(gameRound.toEntity())
     }
+
+    suspend fun updateFinishedOnDb(gameId: Int?, roundId: Int?, finished: Boolean) {
+        return gameRoundDao.updateFinished(gameId, roundId, finished)
+    }
+
+    fun getNotFinishedByGameFromDb(gameId: Int?): List<GameRoundModel> {
+        return gameRoundDao.getNotFinishedByGame(gameId).map {
+            it.toDomain()
+        }
+    }
 }

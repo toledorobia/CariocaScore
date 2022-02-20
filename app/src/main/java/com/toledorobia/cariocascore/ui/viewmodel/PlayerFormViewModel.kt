@@ -1,57 +1,77 @@
 package com.toledorobia.cariocascore.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.toledorobia.cariocascore.domain.models.InvalidPlayerException
+import com.toledorobia.cariocascore.R
+import com.toledorobia.cariocascore.core.IntentKey
+import com.toledorobia.cariocascore.core.Utils
 import com.toledorobia.cariocascore.domain.models.PlayerModel
+import com.toledorobia.cariocascore.domain.usecases.GetPlayerForForm
 import com.toledorobia.cariocascore.domain.usecases.SavePlayer
+import com.toledorobia.cariocascore.ui.event.FormEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class PlayerFormViewModel @Inject constructor(
-    private val savePlayer: SavePlayer
+    private val state: SavedStateHandle,
+    private val getPlayerForForm: GetPlayerForForm,
+    private val savePlayer: SavePlayer,
+    private val utils: Utils,
 ) : ViewModel() {
+    var playerId: Int? = null
+    val player = MutableLiveData<PlayerModel?>()
+    val name = MutableLiveData("")
 
-    val loading = MutableLiveData<Boolean>(false)
-    val name = MutableLiveData<String>("")
-    val playerId: Int? = null
+    private val _formEventChannel = Channel<FormEvent>()
+    val formEvent = _formEventChannel.receiveAsFlow()
 
-    fun onCreate() {
-//        viewModelScope.launch {
-//            val roundsList = withContext(Dispatchers.IO) {
-//                getRoundsForWizard()
-//            }
-//            roundsSelected.addAll(0, roundsList.map {
-//                it.id
-//            })
-//            rounds.postValue(roundsList)
-//        }
+    init {
+        viewModelScope.launch {
+            if (state.contains(IntentKey.PLAYER_ID)) {
+                playerId = state.get<Int>(IntentKey.PLAYER_ID)
+                val p = getPlayerForForm(playerId)
+                player.postValue(p)
+            }
+        }
     }
 
     fun setName(name: String) {
         this.name.postValue(name);
     }
 
-    fun setLoading(value: Boolean) {
-        loading.postValue(value)
+    fun onSavePlayer() {
+        viewModelScope.launch {
+            _formEventChannel.send(FormEvent.Submitting(true))
+
+            val namePerson = name.value;
+            if (namePerson.isNullOrEmpty()) {
+                _formEventChannel.apply {
+                    send(FormEvent.Error(utils.str(R.string.val_cant_be_empty, utils.str(R.string.player_name))))
+                    send(FormEvent.Submitting(false))
+                }
+            }
+            else {
+                savePlayer(PlayerModel(playerId, namePerson, false))
+                _formEventChannel.send(FormEvent.Success(utils.str(R.string.msg_saved, utils.getString(R.string.player)), true))
+            }
+        }
     }
 
-    @Throws(InvalidPlayerException::class)
-    fun onSavePlayer() {
-        setLoading(true)
-
-        val namePerson = name.value;
-        if (namePerson == null || namePerson!!.isEmpty()) {
-            setLoading(false)
-            throw InvalidPlayerException("The name can't be empty")
+    fun onDeletePlayer() {
+        if (player.value == null) {
+            return
         }
 
         viewModelScope.launch {
-            savePlayer(PlayerModel(playerId, namePerson, false))
-            setLoading(false)
+            val player = player.value!!
+            savePlayer(PlayerModel(player.id, player.name, true))
+            _formEventChannel.send(FormEvent.Delete(utils.str(R.string.player_deleted)))
         }
     }
 }

@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CariocaScore">
         <activity
+            android:name=".ui.view.activity.RoundFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.view.activity.GamePanelActivity"
             android:exported="false" />
         <activity
@@ -20,11 +23,9 @@
             android:name=".ui.view.activity.GameWizardActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.activity.GameFormActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.view.activity.MainActivity"
             android:exported="true"
+            android:theme="@style/Theme.Splash"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

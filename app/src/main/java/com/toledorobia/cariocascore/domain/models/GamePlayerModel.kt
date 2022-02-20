@@ -8,6 +8,7 @@ data class GamePlayerModel(
     val playerId: Int?,
     val score: Int,
     val winner: Boolean,
+    val loser: Boolean,
 )
 
-fun GamePlayerEntity.toDomain() = GamePlayerModel(id, gameId, playerId, score, winner)
+fun GamePlayerEntity.toDomain() = GamePlayerModel(id, gameId, playerId, score, winner, loser)
