@@ -26,7 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvRoundForm">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btRoundBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             style="@style/ButtonSecondary"
             android:text="@string/back" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btRoundSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

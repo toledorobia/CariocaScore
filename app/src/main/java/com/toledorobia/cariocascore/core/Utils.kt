@@ -1,9 +1,9 @@
 package com.toledorobia.cariocascore.core
 
 import android.content.Context
-import android.util.Log
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
+import com.toledorobia.cariocascore.R
+import java.text.DateFormat
+import java.util.*
 
 class Utils (private val appContext: Context) {
     fun getStringByName(value: String): String {
@@ -17,5 +17,16 @@ class Utils (private val appContext: Context) {
 
     fun str(id: Int, vararg values: Any): String {
         return getString(id, *values)
+    }
+
+    fun defaultGameName(): String {
+        //val dateFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
+        val format: DateFormat = DateFormat.getDateTimeInstance(
+            DateFormat.DEFAULT,
+            DateFormat.SHORT,
+            Locale.getDefault()
+        )
+
+        return str(R.string.game_default_name, format.format(Date()))
     }
 }

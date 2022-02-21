@@ -41,13 +41,11 @@ class GamePanelActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         gamePanelAdapter.setOnClickItem {
-            if (!it.finished) {
-                val intent = Intent(this@GamePanelActivity, RoundFormActivity::class.java).apply {
-                    putExtra(IntentKey.GAME_ID, it.gameId)
-                    putExtra(IntentKey.ROUND_ID, it.roundId)
-                }
-                startActivity(intent)
+            val intent = Intent(this@GamePanelActivity, RoundFormActivity::class.java).apply {
+                putExtra(IntentKey.GAME_ID, it.gameId)
+                putExtra(IntentKey.ROUND_ID, it.roundId)
             }
+            startActivity(intent)
         }
 
         binding.apply {

@@ -36,6 +36,8 @@ class PlayerFormActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
+        title = getString(R.string.title_form_new, getString(R.string.player))
+
         binding.btPlayerFormSave.setOnClickListener {
             playerFormViewModel.onSavePlayer()
         }
@@ -51,6 +53,8 @@ class PlayerFormActivity : AppCompatActivity() {
         lifecycleScope.launchWhenStarted {
             playerFormViewModel.player.observe(this@PlayerFormActivity) {
                 if (it != null) {
+                    title = getString(R.string.title_form_edit, getString(R.string.player))
+
                     binding.etFormPlayerName.setText(it.name)
                     invalidateOptionsMenu()
                 }

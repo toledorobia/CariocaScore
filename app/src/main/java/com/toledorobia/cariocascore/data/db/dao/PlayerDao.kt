@@ -34,9 +34,9 @@ interface PlayerDao {
 
     @Query("SELECT player.id " +
             ", player.name AS playerName " +
-            ", IFNULL(SUM(CASE WHEN game.deleted = 0 THEN game_player.winner ELSE 0 END), 0) AS wins " +
-            ", IFNULL(SUM(CASE WHEN game.deleted = 0 THEN game_player.loser ELSE 0 END), 0) AS losses " +
-            ", IFNULL(CASE WHEN game.deleted = 0 THEN 1 ELSE 0 END, 0) AS matches " +
+            ", IFNULL(SUM(CASE WHEN game.id IS NOT NULL AND game.deleted = 0 THEN game_player.winner ELSE 0 END), 0) AS wins " +
+            ", IFNULL(SUM(CASE WHEN game.id IS NOT NULL AND game.deleted = 0 THEN game_player.loser ELSE 0 END), 0) AS losses " +
+            ", IFNULL(SUM(CASE WHEN game.id IS NOT NULL AND game.deleted = 0 THEN 1 ELSE 0 END), 0) AS matches " +
             "FROM player " +
             "LEFT JOIN game_player ON game_player.player_id = player.id " +
             "LEFT JOIN game ON game.id = game_player.game_id " +

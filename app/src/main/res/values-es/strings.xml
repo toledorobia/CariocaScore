@@ -2,6 +2,8 @@
     <string name="app_name">Carioca Score</string>
     <string name="title_games">Partidas</string>
     <string name="title_players">Jugadores</string>
+    <string name="title_form_new">Nuevo %1$s</string>
+    <string name="title_form_edit">Editar %1$s</string>
 
     <string name="player">Jugador</string>
     <string name="game">Juego</string>
@@ -10,7 +12,10 @@
     <string name="name">Nombre</string>
     <string name="players">Jugadores</string>
     <string name="rounds">Rondas</string>
+    <string name="game_default_name">Juego %1$s</string>
 
+    <string name="important">Importante</string>
+    <string name="ok">Ok</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="back">Volver</string>
@@ -31,12 +36,16 @@
     <string name="confirm_scores">Confirmar puntajes</string>
     <string name="msg_confirm_scores">¿Estás seguro de guardar los puntajes de esta ronda? Esto no puede editarse posteriormente.</string>
     <string name="msg_confirm_delete_game">¿Estás seguro que deseas eliminar este juego?</string>
+    <string name="msg_create_game_required_players">Para poder crear un juego debes primero crear al menos 2 jugadores.</string>
     <string name="game_deleted">Juego eliminado.</string>
     <string name="player_deleted">Jugador eliminado.</string>
 
     <string name="val_cant_be_empty">%1$s no puede ser vacio.</string>
     <string name="val_required_players">Debes seleccionar por lo menos 2 jugadores.</string>
     <string name="val_required_rounds">Debes seleccionar por lo menos una ronda.</string>
+    <string name="val_round_players_scores_required">Los puntajes de todos los jugadores son obligatorios.</string>
+    <string name="val_round_players_winner_required">Debes indicar a un jugador como ganador, asignado 0 como puntaje.</string>
+    <string name="val_round_players_winner_lossers_required">Debes indicar un ganador (0 puntaje) y los perderores (puntaje mayor a 0).</string>
 
     <string name="msg_saved">%1$s guardado.</string>
     <string name="msg_created">%1$s creado.</string>

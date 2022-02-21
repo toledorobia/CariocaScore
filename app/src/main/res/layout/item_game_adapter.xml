@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/finished"
-            style="@style/BadgeSuccess" />
+            style="@style/BadgePrimary" />
 
         <TextView
             android:id="@+id/tvPending"
@@ -64,7 +64,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:text=""
-            style="@style/BadgeWarning" />
+            style="@style/BadgeSuccess" />
     </LinearLayout>
 
 

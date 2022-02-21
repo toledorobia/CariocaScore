@@ -25,7 +25,8 @@ interface GameDao {
                 "LEFT JOIN game_player ON game_player.game_id = game.id " +
                 "LEFT JOIN player ON game_player.player_id = player.id " +
                 "WHERE game.deleted = 0 " +
-                "GROUP BY game.id"
+                "GROUP BY game.id " +
+                "ORDER BY game.id DESC"
     )
     fun getStatus(): Flow<List<GameStatus>>
 

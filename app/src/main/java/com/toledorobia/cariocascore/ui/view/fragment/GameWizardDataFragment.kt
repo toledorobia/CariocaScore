@@ -8,13 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
+import com.toledorobia.cariocascore.core.Utils
 import com.toledorobia.cariocascore.databinding.FragmentGameWizardDataBinding
 import com.toledorobia.cariocascore.ui.viewmodel.GameWizardViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class GameWizardDataFragment : Fragment() {
     private lateinit var binding: FragmentGameWizardDataBinding
     private val gameWizardViewModel: GameWizardViewModel by activityViewModels()
     private lateinit var nameTextWatcher: TextWatcher
+
+    @Inject
+    lateinit var utils: Utils
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +38,8 @@ class GameWizardDataFragment : Fragment() {
         nameTextWatcher = binding.etGameName.addTextChangedListener {
             gameWizardViewModel.setGameName(it.toString())
         }
+
+        binding.etGameName.setText(utils.defaultGameName())
     }
 
     override fun onDestroy() {

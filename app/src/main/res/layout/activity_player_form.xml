@@ -24,14 +24,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Player name..."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFormPlayerName"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btPlayerFormSave"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -43,7 +42,7 @@
         app:layout_constraintStart_toStartOf="@+id/glPlayerForm"
         app:layout_constraintTop_toBottomOf="@+id/etFormPlayerName" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btPlayerFormCancel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

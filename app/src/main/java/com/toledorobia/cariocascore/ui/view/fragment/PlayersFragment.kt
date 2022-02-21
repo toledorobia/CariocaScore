@@ -14,14 +14,14 @@ import com.toledorobia.cariocascore.core.IntentKey
 import com.toledorobia.cariocascore.databinding.FragmentPlayersBinding
 import com.toledorobia.cariocascore.ui.adapter.PlayersAdapter
 import com.toledorobia.cariocascore.ui.view.activity.PlayerFormActivity
-import com.toledorobia.cariocascore.ui.viewmodel.PlayersViewModel
+import com.toledorobia.cariocascore.ui.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 class PlayersFragment : Fragment() {
 
     private lateinit var binding: FragmentPlayersBinding
-    private val playersViewModel: PlayersViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     @Inject
     lateinit var playersAdapter: PlayersAdapter
@@ -58,7 +58,7 @@ class PlayersFragment : Fragment() {
         )
 
         lifecycleScope.launchWhenStarted {
-            playersViewModel.players.collectLatest {
+            mainViewModel.players.collectLatest {
                 playersAdapter.updateItems(it)
             }
         }

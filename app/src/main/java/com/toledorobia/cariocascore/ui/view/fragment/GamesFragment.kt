@@ -5,25 +5,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.toledorobia.cariocascore.R
 import com.toledorobia.cariocascore.core.IntentKey
 import com.toledorobia.cariocascore.databinding.FragmentGamesBinding
 import com.toledorobia.cariocascore.ui.adapter.GameAdapter
 import com.toledorobia.cariocascore.ui.view.activity.GamePanelActivity
 import com.toledorobia.cariocascore.ui.view.activity.GameWizardActivity
-import com.toledorobia.cariocascore.ui.viewmodel.GamesViewModel
+import com.toledorobia.cariocascore.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class GamesFragment : Fragment() {
 
-    private val gamesViewModel: GamesViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentGamesBinding
 
     @Inject
@@ -56,15 +60,28 @@ class GamesFragment : Fragment() {
         )
 
         lifecycleScope.launchWhenStarted {
-            gamesViewModel.games.collectLatest {
-                gameAdapter.updateItems(it)
+            launch {
+                mainViewModel.games.collectLatest {
+                    gameAdapter.updateItems(it)
+                }
+            }
+        }
+
+        binding.faGameAdd.setOnClickListener {
+            if (mainViewModel.withPlayers.value!!) {
+                val intent = Intent(context, GameWizardActivity::class.java)
+                startActivity(intent)
+            }
+            else {
+                AlertDialog.Builder(requireContext()).apply {
+                    setTitle(getString(R.string.important))
+                    setMessage(getString(R.string.msg_create_game_required_players))
+                    setNegativeButton(getString(R.string.ok), null)
+                    show()
+                }
             }
         }
 
 
-        binding.faGameAdd.setOnClickListener {
-            val intent = Intent(context, GameWizardActivity::class.java)
-            startActivity(intent)
-        }
     }
 }

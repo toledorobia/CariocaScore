@@ -32,8 +32,8 @@ class PlayersAdapter(
 
             context?.resources?.apply {
                 tvPlayerMatches.text = getQuantityString(R.plurals.number_matches, item.matches ?: 0, item.matches ?: 0)
-                tvPlayerWins.text = getQuantityString(R.plurals.number_wins, item.wins ?: 0, item.matches ?: 0)
-                tvPlayerLosses.text = getQuantityString(R.plurals.number_losses, item.losses ?: 0, item.matches ?: 0)
+                tvPlayerWins.text = getQuantityString(R.plurals.number_wins, item.wins ?: 0, item.wins ?: 0)
+                tvPlayerLosses.text = getQuantityString(R.plurals.number_losses, item.losses ?: 0, item.losses ?: 0)
             }
 
             holder.itemView.setOnClickListener {

@@ -44,5 +44,5 @@
         app:layout_constraintEnd_toStartOf="@+id/tvGameScoresPlayerScore"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_emoji_events_24"
-        app:tint="#ffa000" />
+        app:tint="@color/color_secondary" />
 </androidx.constraintlayout.widget.ConstraintLayout>

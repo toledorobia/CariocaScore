@@ -2,27 +2,34 @@
     <!-- Base application theme. -->
     <style name="Theme.CariocaScore" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
+        <item name="colorOnSecondary">@color/color_on_secondary</item>
+        <item name="colorAccent">@color/color_accent</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/color_primary_variant</item>
         <!-- Customize your theme here. -->
     </style>
 
     <style name="Theme.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/purple_500</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/icon_splash</item>
+        <item name="windowSplashScreenBackground">@color/color_primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_icon_splash</item>
         <item name="windowSplashScreenIconBackgroundColor">@color/white</item>
         <item name="postSplashScreenTheme">@style/Theme.CariocaScore</item>
     </style>
 
+    <style name="ButtonPrimary" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/color_primary</item>
+        <item name="backgroundTint">@color/color_primary</item>
+    </style>
+
     <style name="ButtonSecondary" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/gray</item>
+        <item name="backgroundTint">@color/gray</item>
     </style>
 
     <style name="Badge" parent="@android:style/TextAppearance">
@@ -32,6 +39,11 @@
         <item name="android:paddingBottom">2dp</item>
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="BadgePrimary" parent="Badge">
+        <item name="android:background">@drawable/badge_primary</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="BadgeSecondary" parent="Badge">

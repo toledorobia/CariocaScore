@@ -1,7 +1,9 @@
 package com.toledorobia.cariocascore.ui.viewmodel
 
 import androidx.lifecycle.*
+import com.toledorobia.cariocascore.R
 import com.toledorobia.cariocascore.core.IntentKey
+import com.toledorobia.cariocascore.core.Utils
 import com.toledorobia.cariocascore.domain.models.GameScoreModel
 import com.toledorobia.cariocascore.domain.usecases.*
 import com.toledorobia.cariocascore.ui.event.FormEvent
@@ -19,6 +21,7 @@ class RoundFormViewModel @Inject constructor(
     getRoundForForm: GetRoundForForm,
     getScoresForForm: GetScoresForForm,
     val saveRoundResults: SaveRoundResults,
+    val utils: Utils,
 ) : ViewModel() {
     val gameId = state.get<Int>(IntentKey.GAME_ID)
     val roundId = state.get<Int>(IntentKey.ROUND_ID)
@@ -34,6 +37,10 @@ class RoundFormViewModel @Inject constructor(
             withContext(Dispatchers.IO) {
                 val gameResults = getScoresForForm(gameId, roundId)
                 results.postValue(gameResults)
+
+                scores.putAll(gameResults.map {
+                    it.id to it.score
+                })
             }
         }
     }
@@ -50,19 +57,19 @@ class RoundFormViewModel @Inject constructor(
             when {
                 scores.filterValues { it == null }.isNotEmpty() -> {
                     _formEventChannel.apply {
-                        send(FormEvent.Error("You must set all players scores"))
+                        send(FormEvent.Error(utils.str(R.string.val_round_players_scores_required)))
                         send(FormEvent.Submitting(false))
                     }
                 }
                 scores.filterValues { it == 0 }.size != 1 -> {
                     _formEventChannel.apply {
-                        send(FormEvent.Error("You must set one player with 0 as score (winner)"))
+                        send(FormEvent.Error(utils.str(R.string.val_round_players_winner_required)))
                         send(FormEvent.Submitting(false))
                     }
                 }
                 scores.filterValues { it!! > 0 }.size != notWinners -> {
                     _formEventChannel.apply {
-                        send(FormEvent.Error("You must set one winner (0 score) and losers (more than 0 score)"))
+                        send(FormEvent.Error(utils.str(R.string.val_round_players_winner_lossers_required)))
                         send(FormEvent.Submitting(false))
                     }
                 }
@@ -71,7 +78,7 @@ class RoundFormViewModel @Inject constructor(
                         saveRoundResults(gameId, roundId, scores)
                     }
 
-                    _formEventChannel.send(FormEvent.Success("Round set successfully", true))
+                    _formEventChannel.send(FormEvent.Success(utils.str(R.string.msg_saved, utils.str(R.string.round)), true))
                 }
             }
         }

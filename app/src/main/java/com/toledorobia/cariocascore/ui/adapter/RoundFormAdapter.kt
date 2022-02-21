@@ -34,6 +34,10 @@ class RoundFormAdapter(
                 etScore.removeTextChangedListener(holder.textWatcher)
             }
 
+            if (item.score != null) {
+                etScore.setText(item.score.toString())
+            }
+
             holder.textWatcher = etScore.addTextChangedListener {
                 var score: Int? = null
 

@@ -2,6 +2,8 @@
     <string name="app_name">Carioca Score</string>
     <string name="title_games">Games</string>
     <string name="title_players">Players</string>
+    <string name="title_form_new">New %1$s</string>
+    <string name="title_form_edit">Edit %1$s</string>
 
     <string name="player">Player</string>
     <string name="game">Game</string>
@@ -10,7 +12,10 @@
     <string name="name">Name</string>
     <string name="players">Players</string>
     <string name="rounds">Rounds</string>
+    <string name="game_default_name">Game %1$s</string>
 
+    <string name="important">Important</string>
+    <string name="ok">Ok</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="back">Back</string>
@@ -31,12 +36,16 @@
     <string name="confirm_scores">Confirm scores</string>
     <string name="msg_confirm_scores">Are you sure you save the scores for this round? This cannot be edited later.</string>
     <string name="msg_confirm_delete_game">Are you sure you want delete this game?</string>
+    <string name="msg_create_game_required_players">In order to create a game you must first create at least 2 players.</string>
     <string name="game_deleted">Game deleted.</string>
     <string name="player_deleted">Player deleted.</string>
 
     <string name="val_cant_be_empty">%1$s can\'t be empty.</string>
     <string name="val_required_players">You must choose almost 2 players.</string>
     <string name="val_required_rounds">You must chose almost one round.</string>
+    <string name="val_round_players_scores_required">You must set all players scores.</string>
+    <string name="val_round_players_winner_required">You must set one player with 0 as score (winner).</string>
+    <string name="val_round_players_winner_lossers_required">You must set one winner (0 score) and losers (more than 0 score).</string>
 
     <string name="msg_saved">%1$s saved.</string>
     <string name="msg_created">%1$s created.</string>>

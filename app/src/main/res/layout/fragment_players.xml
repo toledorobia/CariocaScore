@@ -28,6 +28,8 @@
         android:layout_marginBottom="68dp"
         android:clickable="true"
         android:tooltipText="@string/new_player"
+        app:tint="@color/white"
+        app:backgroundTint="@color/color_secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_24" />

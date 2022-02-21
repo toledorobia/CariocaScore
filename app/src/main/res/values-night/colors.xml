@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#4b636e</color>
-    <color name="purple_500">#FF6200EE</color>
+
 
     <color name="color_primary">#1976d2</color>
     <color name="color_primary_variant">#004ba0</color>
@@ -13,6 +12,5 @@
     <color name="color_secondary_variant">#c17900</color>
     <color name="color_on_secondary">@color/black</color>
     <color name="color_accent">#ff00838f</color>
-
-    <color name="bg_total_scores">#0288d1</color>
+    <color name="bg_total_scores">#2196f3</color>
 </resources>
