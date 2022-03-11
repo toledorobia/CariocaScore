@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Carioca Score</string>
+    <string name="app_name">Puntaje Carioca</string>
     <string name="title_games">Partidas</string>
     <string name="title_players">Jugadores</string>
     <string name="title_form_new">Nuevo %1$s</string>
@@ -57,7 +57,7 @@
     <string name="two_three_of_a_kind_one_straight">Dos tríos, una escala</string>
     <string name="two_straights_one_three_of_a_kind">Dos escalas, un trío</string>
     <string name="three_straights">Tres escalas</string>
-    <string name="four_three_of_a_kind">Cuatro escalas</string>
+    <string name="four_three_of_a_kind">Cuatro tríos</string>
     <string name="crazy_straight">Escala loca</string>
     <string name="royal_straight">Escala real</string>
 

@@ -23,7 +23,7 @@ class Utils (private val appContext: Context) {
         //val dateFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)
         val format: DateFormat = DateFormat.getDateTimeInstance(
             DateFormat.DEFAULT,
-            DateFormat.SHORT,
+            DateFormat.MEDIUM,
             Locale.getDefault()
         )
 

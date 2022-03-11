@@ -61,7 +61,8 @@ class RoundFormActivity : AppCompatActivity() {
         }
 
         binding.btRoundSave.setOnClickListener {
-            onSaveRound()
+//            onSaveRound()
+            roundFormViewModel.saveRound()
         }
 
         roundFormViewModel.results.observe(this) {

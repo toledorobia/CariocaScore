@@ -12,18 +12,19 @@ interface GameDao {
     fun getById(id: Int?): Flow<GameEntity>
 
     @Query(
-        "SELECT game.id AS id" +
+        "SELECT game.id AS id " +
                 ", game.name AS name " +
                 ", game.finished AS finished " +
                 ", COUNT(DISTINCT(game_player.id)) AS players " +
                 ", COUNT(DISTINCT(game_round.id)) AS rounds " +
                 ", 0 AS roundsFinished " +
-                ", CASE WHEN game_player.winner = 1 THEN player.name ELSE null END AS winner " +
-                ", CASE WHEN game_player.loser = 1 THEN player.name ELSE null END AS loser " +
+                ", winner.name AS winner " +
+                ", loser.name AS loser " +
                 "FROM game " +
                 "LEFT JOIN game_round ON game_round.game_id = game.id " +
                 "LEFT JOIN game_player ON game_player.game_id = game.id " +
-                "LEFT JOIN player ON game_player.player_id = player.id " +
+                "LEFT JOIN player AS winner ON winner.id = (SELECT player_id FROM game_player WHERE game_id = game.id and winner = 1) " +
+                "LEFT JOIN player AS loser ON loser.id = (SELECT player_id FROM game_player WHERE game_id = game.id and loser = 1) " +
                 "WHERE game.deleted = 0 " +
                 "GROUP BY game.id " +
                 "ORDER BY game.id DESC"
